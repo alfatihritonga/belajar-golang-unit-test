@@ -1,11 +1,21 @@
 package mathutils
 
 import (
+	"fmt"
 	"runtime"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
+
+func TestMain(m *testing.M) {
+	// before unit test running
+	fmt.Println("BEFORE UNIT TEST")
+	m.Run()
+
+	// after unit test running
+	fmt.Println("AFTER UNIT TEST")
+}
 
 func TestSkip(t *testing.T) {
 	if runtime.GOOS == "windows" {
