@@ -1,20 +1,20 @@
 package mathutils
 
 func Add(x, y int) int {
-	return x + y + 5
+	return x + y
 }
 
-func Substract(x, y int) int {
-	return x - y + 5
+func Subtract(x, y int) int {
+	return x - y
 }
 
 func Multiply(x, y int) int {
-	return x*y + 5
+	return x * y
 }
 
 func Divide(x, y int) float64 {
 	if y == 0 {
 		panic("Division by zero")
 	}
-	return float64(x)/float64(y) + 5
+	return float64(x) / float64(y)
 }
