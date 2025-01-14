@@ -23,6 +23,59 @@ func TestSkip(t *testing.T) {
 	}
 }
 
+func TestTableAdd(t *testing.T) {
+	tests := []struct {
+		name     string
+		x        int
+		y        int
+		expected int
+	}{
+		{
+			name:     "10 plus 5",
+			x:        10,
+			y:        5,
+			expected: 15,
+		},
+		{
+			name:     "10 plus -5",
+			x:        10,
+			y:        -5,
+			expected: 5,
+		},
+		{
+			name:     "-10 plus -5",
+			x:        -10,
+			y:        -5,
+			expected: -15,
+		},
+		{
+			name:     "10 plus 0",
+			x:        10,
+			y:        0,
+			expected: 10,
+		},
+		{
+			name:     "0 plus 5",
+			x:        0,
+			y:        5,
+			expected: 5,
+		},
+		{
+			name:     "0 plus 0",
+			x:        0,
+			y:        0,
+			expected: 0,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := Add(test.x, test.y)
+			assert.Equal(t, test.expected, result, "Add(%d, %d) = %d; want %d", test.x, test.y, result, test.expected)
+		})
+	}
+}
+
 func TestAdd(t *testing.T) {
 	t.Run("10 plus 5", func(t *testing.T) {
 		result := Add(10, 5)
