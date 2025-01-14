@@ -1,10 +1,17 @@
 package mathutils
 
 import (
+	"runtime"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
+
+func TestSkip(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		t.Skip("Cannot run on Windows OS")
+	}
+}
 
 func TestAdd(t *testing.T) {
 	result := Add(10, 5)
