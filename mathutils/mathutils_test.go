@@ -9,9 +9,21 @@ import (
 )
 
 func BenchmarkAdd(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		Add(100, 90)
-	}
+	b.Run("Add(100, 90)", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			Add(100, 90)
+		}
+	})
+	b.Run("Add(205, 100)", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			Add(205, 100)
+		}
+	})
+	b.Run("Add(50, 90)", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			Add(50, 90)
+		}
+	})
 }
 
 func TestMain(m *testing.M) {
