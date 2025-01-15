@@ -8,6 +8,12 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func BenchmarkAdd(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Add(100, 90)
+	}
+}
+
 func TestMain(m *testing.M) {
 	// before unit test running
 	fmt.Println("BEFORE UNIT TEST")
