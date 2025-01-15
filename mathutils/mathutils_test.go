@@ -8,6 +8,28 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func BenchmarkTableAdd(b *testing.B) {
+	benchmarks := []struct {
+		name string
+		x    int
+		y    int
+	}{
+		{"Add(10, 5)", 10, 5},
+		{"Add(95, 20)", 95, 20},
+		{"Add(190, 35)", 190, 35},
+		{"Add(0, 105)", 0, 105},
+		{"Add(105, 95)", 105, 95},
+		{"Add(130, 215)", 130, 215},
+		{"Add(1000, 225)", 1000, 225},
+	}
+
+	for _, benchmark := range benchmarks {
+		b.Run(benchmark.name, func(b *testing.B) {
+			Add(benchmark.x, benchmark.y)
+		})
+	}
+}
+
 func BenchmarkAdd(b *testing.B) {
 	b.Run("Add(100, 90)", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
